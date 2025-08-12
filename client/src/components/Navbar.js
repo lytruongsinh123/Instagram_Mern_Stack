@@ -44,7 +44,7 @@ const NavBar = ()=>{
 
      const fetchUsers = (query)=>{
         setSearch(query)
-        fetch('/search-users',{
+        fetch('https://hung-instagram.onrender.com/search-users',{
           method:"post",
           headers:{
             "Content-Type":"application/json"

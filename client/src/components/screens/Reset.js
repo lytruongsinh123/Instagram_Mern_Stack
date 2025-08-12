@@ -9,7 +9,7 @@ const Reset  = ()=>{
             M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
             return
         }
-        fetch('/reset-password',{
+        fetch('https://hung-instagram.onrender.com/reset-password',{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

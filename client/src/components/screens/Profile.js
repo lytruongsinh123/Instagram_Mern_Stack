@@ -6,7 +6,7 @@ const Profile  = ()=>{
     const {state,dispatch} = useContext(UserContext)
     const [image,setImage] = useState("")
     useEffect(()=>{
-       fetch('/mypost',{
+       fetch('https://hung-instagram.onrender.com/mypost',{
            headers:{
                "Authorization":"Bearer "+localStorage.getItem("jwt")
            }
@@ -30,7 +30,7 @@ const Profile  = ()=>{
         .then(data=>{
     
        
-           fetch('/updatepic',{
+           fetch('https://hung-instagram.onrender.com/updatepic',{
                method:"put",
                headers:{
                    "Content-Type":"application/json",

@@ -7,7 +7,7 @@ const SignIn  = ()=>{
     const {token} = useParams()
     console.log(token)
     const PostData = ()=>{
-        fetch("/new-password",{
+        fetch("https://hung-instagram.onrender.com/new-password",{
             method:"post",
             headers:{
                 "Content-Type":"application/json"
