@@ -16,41 +16,64 @@ const NavBar = () => {
         if (state) {
             return [
                 <li key="1">
-                    <i
+                    <button
                         data-target="modal1"
-                        className="large material-icons modal-trigger"
-                        style={{ color: "black" }}>
-                        search
-                    </i>
+                        className="modal-trigger navbar-link navbar-btn-reset"
+                        tabIndex={0}>
+                        <i className="material-icons navbar-icon">search</i>
+                        <span className="navbar-link-label">Search</span>
+                    </button>
                 </li>,
                 <li key="2">
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/profile" className="navbar-link">
+                        <i className="material-icons navbar-icon">
+                            account_circle
+                        </i>
+                        <span className="navbar-link-label">Profile</span>
+                    </Link>
                 </li>,
                 <li key="3">
-                    <Link to="/create">Create Post</Link>
+                    <Link to="/create" className="navbar-link">
+                        <i className="material-icons navbar-icon">add_box</i>
+                        <span className="navbar-link-label">Create Post</span>
+                    </Link>
                 </li>,
                 <li key="4">
-                    <Link to="/myfollowingpost">My following Posts</Link>
+                    <Link to="/myfollowingpost" className="navbar-link">
+                        <i className="material-icons navbar-icon">
+                            dynamic_feed
+                        </i>
+                        <span className="navbar-link-label">
+                            My following Posts
+                        </span>
+                    </Link>
                 </li>,
                 <li key="5">
                     <button
-                        className="navbar-logout-btn"
+                        className="navbar-logout-btn navbar-link"
                         onClick={() => {
                             localStorage.clear();
                             dispatch({ type: "CLEAR" });
                             history.push("/signin");
                         }}>
-                        Logout
+                        <i className="material-icons navbar-icon">logout</i>
+                        <span className="navbar-link-label">Logout</span>
                     </button>
                 </li>,
             ];
         } else {
             return [
                 <li key="6">
-                    <Link to="/signin">Sign In</Link>
+                    <Link to="/signin" className="navbar-link">
+                        <i className="material-icons navbar-icon">login</i>
+                        <span className="navbar-link-label">Sign In</span>
+                    </Link>
                 </li>,
                 <li key="7">
-                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/signup" className="navbar-link">
+                        <i className="material-icons navbar-icon">person_add</i>
+                        <span className="navbar-link-label">Sign Up</span>
+                    </Link>
                 </li>,
             ];
         }
