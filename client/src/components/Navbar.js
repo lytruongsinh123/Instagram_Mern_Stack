@@ -47,10 +47,10 @@ const NavBar = () => {
         } else {
             return [
                 <li key="6">
-                    <Link to="/signin">Signin</Link>
+                    <Link to="/signin">Sign In</Link>
                 </li>,
                 <li key="7">
-                    <Link to="/signup">Signup</Link>
+                    <Link to="/signup">Sign Up</Link>
                 </li>,
             ];
         }
