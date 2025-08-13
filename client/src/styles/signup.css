@@ -1,0 +1,110 @@
+/* Signup Modern Style - đồng bộ với profile.css và signin.css */
+.signup-container {
+    max-width: 400px;
+    margin: 64px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.13),
+        0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    border: 1px solid #f0f1f3;
+    padding: 36px 32px 32px 32px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signup-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+.signup-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.signup-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    background: #fafbfc;
+    color: #222;
+    transition: border 0.18s;
+}
+.signup-input:focus {
+    border: 1.5px solid #ff5858;
+    outline: none;
+    background: #fff;
+}
+.signup-btn {
+    width: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.08rem;
+    padding: 10px 0;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.signup-btn:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+}
+.signup-link {
+    color: #f09819;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: color 0.18s;
+}
+.signup-link:hover {
+    color: #ff5858;
+    text-decoration: underline;
+}
+.signup-upload {
+    width: 100%;
+    margin-bottom: 8px;
+}
+.signup-upload .signup-upload-btn {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+    color: #fff;
+    font-weight: 500;
+    padding: 7px 18px;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.signup-upload .signup-upload-btn:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+}
+.signup-upload .file-path {
+    width: 100%;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    padding: 7px 10px;
+    font-size: 0.98rem;
+    background: #fafbfc;
+}
+@media (max-width: 600px) {
+    .signup-container {
+        max-width: 99vw;
+        padding: 18px 4vw 18px 4vw;
+        border-radius: 10px;
+    }
+    .signup-title {
+        font-size: 1.3rem;
+    }
+}
