@@ -24,7 +24,9 @@ require("./models/post");
 app.use(express.json());
 app.use(
     cors({
-        origin: process.env.FRONTEND_URL || "http://localhost:3000", // thay bằng domain thật của bạn trên Vercel
+        origin: [process.env.FRONTEND_URL, "http://localhost:3000"].filter(
+            Boolean
+        ),
         credentials: true,
     })
 );
