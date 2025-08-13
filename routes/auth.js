@@ -21,46 +21,45 @@ const transporter = nodemailer.createTransport(
     })
 );
 
-router.post('/signup',(req,res)=>{
-  const {name,email,password,pic} = req.body 
-  if(!email || !password || !name){
-     return res.status(422).json({error:"please add all the fields"})
-  }
-  User.findOne({email:email})
-  .then((savedUser)=>{
-      if(savedUser){
-        return res.status(422).json({error:"user already exists with that email"})
-      }
-      bcrypt.hash(password,12)
-      .then(hashedpassword=>{
-            const user = new User({
-                email,
-                password:hashedpassword,
-                name,
-                pic
-            })
-    
-            user.save()
-            .then(user=>{
-                transporter.sendMail({
-                    to:user.email,
-                    from:"hdo10120@gmail.com",
-                    subject:"signup success",
-                    html:"<h1>welcome to instagram</h1>"
-                })
-                res.json({message:"saved successfully"})
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-      })
-     
-  })
-  .catch(err=>{
-    console.log(err)
-  })
-})
+router.post("/signup", (req, res) => {
+    const { name, email, password, pic } = req.body;
+    if (!email || !password || !name) {
+        return res.status(422).json({ error: "please add all the fields" });
+    }
+    User.findOne({ email: email })
+        .then((savedUser) => {
+            if (savedUser) {
+                return res
+                    .status(422)
+                    .json({ error: "user already exists with that email" });
+            }
+            bcrypt.hash(password, 12).then((hashedpassword) => {
+                const user = new User({
+                    email,
+                    password: hashedpassword,
+                    name,
+                    pic,
+                });
 
+                user.save()
+                    .then((user) => {
+                        transporter.sendMail({
+                            to: user.email,
+                            from: "hdo10120@gmail.com",
+                            subject: "signup success",
+                            html: "<h1>welcome to instagram</h1>",
+                        });
+                        res.json({ message: "saved successfully" });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
 
 router.post("/signin", (req, res) => {
     const { email, password } = req.body;
@@ -116,9 +115,16 @@ router.post("/reset-password", (req, res) => {
                         from: "hdo10120@gmail.com",
                         subject: "password reset",
                         html: `
-                         <p>You requested for password reset</p>
-                         <h5>click in this <a href="${EMAIL}/reset/${token}">link</a> to reset password</h5>
-                     `,
+                            <div style="font-family:sans-serif;">
+                                <p>Xin chào ${user.name || ""},</p>
+                                <p>Bạn vừa yêu cầu đặt lại mật khẩu cho tài khoản Instagram Clone.</p>
+                                <p>Nhấn vào nút dưới đây để đặt lại mật khẩu:</p>
+                                <a href="${EMAIL}/reset/${token}" style="display:inline-block;padding:10px 20px;background:#1976d2;color:#fff;text-decoration:none;border-radius:4px;">Đặt lại mật khẩu</a>
+                                <p>Nếu bạn không yêu cầu, hãy bỏ qua email này.</p>
+                                <hr>
+                                <p style="font-size:12px;color:#888;">Liên hệ: support@yourdomain.com | © 2025 Instagram Clone</p>
+                            </div>
+                        `,
                     },
                     (err, info) => {
                         if (err) {
