@@ -1,0 +1,117 @@
+/* Profile Modern Style - đồng bộ Home */
+.profile-container {
+    max-width: 900px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.13),
+        0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    border: 1px solid #f0f1f3;
+    padding: 36px 32px 32px 32px;
+    position: relative;
+    z-index: 2;
+}
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+.profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff5858;
+    background: #f7f7f7;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+}
+.profile-info {
+    flex: 1;
+}
+.profile-info h4 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #222;
+}
+.profile-info h5 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin: 0 0 18px 0;
+    color: #666;
+}
+.profile-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 1.01rem;
+    color: #444;
+    font-weight: 500;
+}
+.profile-stats h6 {
+    margin: 0;
+    font-weight: 500;
+}
+.profile-upload {
+    margin: 18px 0 0 0;
+}
+.profile-upload .btn {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.profile-upload .btn:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+}
+.profile-gallery {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    margin-top: 32px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+.profile-gallery .item {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid #f0f1f3;
+    background: #f7f7f7;
+    transition: transform 0.18s;
+    flex-shrink: 0;
+}
+.profile-gallery .item:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 800px) {
+    .profile-container {
+        max-width: 99vw;
+        padding: 18px 4vw 18px 4vw;
+        border-radius: 10px;
+    }
+    .profile-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+    .profile-gallery {
+        gap: 10px;
+        padding-bottom: 6px;
+    }
+    .profile-gallery .item {
+        width: 90px;
+        height: 90px;
+    }
+}

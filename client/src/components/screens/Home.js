@@ -121,6 +121,9 @@ const Home = () => {
     };
     return (
         <div className="home">
+            <div className="bg-decor-blob"></div>
+            <div className="bg-decor-dots"></div>
+            <div className="bg-decor-wave"></div>
             {data.map((item) => {
                 return (
                     <div className="card home-card" key={item._id}>
@@ -180,7 +183,6 @@ const Home = () => {
                                         <h6 key={record._id}>
                                             <span style={{ fontWeight: "500" }}>
                                                 {record.postedBy.name}
-                                        
                                             </span>{" "}
                                             {record.text}
                                         </h6>

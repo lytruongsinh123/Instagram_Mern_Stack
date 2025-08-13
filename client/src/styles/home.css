@@ -1,71 +1,196 @@
+/* Background for Home page */
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #f3e7e9 100%);
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+    font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+body::before {
+    top: -120px;
+    left: -120px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(
+        circle,
+        #ffe3ec 0%,
+        #f8fafc 80%,
+        transparent 100%
+    );
+    filter: blur(8px);
+    opacity: 0.7;
+}
+
+body::after {
+    bottom: -100px;
+    right: -100px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(
+        circle,
+        #e0f7fa 0%,
+        #f8fafc 80%,
+        transparent 100%
+    );
+    filter: blur(10px);
+    opacity: 0.5;
+}
+
+/* Decorative SVG blobs and dots */
+.bg-decor-blob,
+.bg-decor-dots,
+.bg-decor-wave {
+    position: fixed;
+    z-index: 0;
+    opacity: 0.1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.bg-decor-blob {
+    left: 60vw;
+    top: 8vh;
+    width: 180px;
+    height: 180px;
+    opacity: 0.13;
+    background-image: url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 20Q90 0 120 20T160 60Q180 90 160 120T120 160Q90 180 60 160T20 120Q0 90 20 60T60 20Z" fill="%23ffb6b9"/></svg>');
+}
+
+.bg-decor-dots {
+    left: 8vw;
+    bottom: 10vh;
+    width: 120px;
+    height: 40px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="20" r="6" fill="%23f09819"/><circle cx="40" cy="20" r="6" fill="%23ff5858"/><circle cx="70" cy="20" r="6" fill="%2339c0ed"/><circle cx="100" cy="20" r="6" fill="%23b2f7ef"/></svg>');
+}
+
+.bg-decor-wave {
+    right: 6vw;
+    bottom: 4vh;
+    width: 180px;
+    height: 60px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="180" height="60" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 30 Q45 60 90 30 T180 30" stroke="%231976d2" stroke-width="6" fill="none"/></svg>');
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 48px 0;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    animation: fadeinbg 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: none;
+}
+
+@keyframes fadeinbg {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Home Page Modern Card Layout */
 .home-card {
-    max-width: 600px;
-    margin: 36px auto;
-    border-radius: 18px;
-    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.13),
-        0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    max-width: 900px;
+    margin: 48px auto 0;
     background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13), 0 2px 6px rgba(0, 0, 0, 0.09);
     border: 1px solid #f0f1f3;
-    overflow: hidden;
+    padding: 36px 32px 32px;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
     transition: box-shadow 0.18s, transform 0.18s;
 }
 .home-card:hover {
-    box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.16),
-        0 4px 12px 0 rgba(0, 0, 0, 0.11);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.11);
     transform: translateY(-2px) scale(1.012);
 }
 
+/* Image with rounded corners fix */
+.card-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #ff5858;
+    background: #f7f7f7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
 .card-image img {
     width: 100%;
     height: 340px;
     object-fit: cover;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
+    display: block;
     transition: transform 0.18s;
-    background: #f7f7f7;
 }
 .card-image img:hover {
     transform: scale(1.03);
 }
 
-.card-content {
-    padding: 0;
-}
 .card-content .main-content {
-    padding: 22px 28px 10px 28px;
+    padding: 22px 28px 10px;
 }
 
 /* Author row */
 .home h5 {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     font-size: 1.13rem;
     font-weight: 700;
-    color: #222;
-    margin: 0 0 6px 0;
+    margin: 0 0 6px;
+    justify-content: center;
+    color: #ff5858;
 }
 .home h5 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ff5858;
-    margin-right: 8px;
+    border: 3px solid #ff5858;
+    background: #f7f7f7;
+    box-shadow: 0 2px 8px rgba(255, 88, 88, 0.08);
 }
 
 /* Post title */
 .home .main-content h6 {
     font-size: 1.08rem;
     font-weight: 600;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
     color: #1976d2;
 }
 
 /* Post description */
 .home .main-content p {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     color: #444;
     font-size: 1.04rem;
     line-height: 1.6;
@@ -76,9 +201,12 @@
 .action-row {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin: 0 0 8px 0;
+    gap: 24px;
+    margin: 0 0 8px;
     padding: 0 28px;
+    font-size: 1.01rem;
+    color: #444;
+    font-weight: 500;
 }
 .action-row .material-icons {
     color: #ff5858;
@@ -97,22 +225,17 @@
 
 /* Comment list */
 .comment-list {
-    margin: 18px 0 0 0;
-    padding: 0 28px;
+    margin-top: 18px;
+    padding: 14px 28px 0;
     border-top: 1.5px solid #ececec;
-    padding-top: 14px;
 }
 .comment-list h6 {
     margin: 0;
     font-size: 1.01rem;
     font-weight: 400;
     color: #333;
-    background: none;
-    border-radius: 0;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #f0f1f3;
-    display: block;
-    width: 100%;
     word-break: break-word;
 }
 .comment-list h6 span {
@@ -124,28 +247,24 @@
 /* Comment input */
 .card-content form {
     margin-top: 18px;
-    padding: 0 20px 0 20px;
+    padding: 14px 20px 0;
     border-top: 1.5px solid #f0f1f3;
-    padding-top: 14px;
 }
 .home input[type="text"] {
     border-radius: 7px;
-    border: 1.2px solid #e0e0e0;
+    border: 2.5px solid #f09819;
     padding: 7px 12px;
-    margin: 0;
     width: 100%;
     background: #fff;
     font-size: 1rem;
-    box-shadow: none;
-    transition: border 0.18s;
     outline: none;
     color: #222;
     display: block;
     box-sizing: border-box;
+    transition: border 0.18s;
 }
 .home input[type="text"]:focus {
-    border: 1.2px solid #ff5858;
-    background: #fff;
+    border: 2.5px solid #ffb300;
 }
 
 /* Button */
@@ -158,37 +277,38 @@
     background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
     color: #fff;
     border: none;
-    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    box-shadow: 0 2px 8px rgba(255, 88, 88, 0.08);
     transition: background 0.2s, box-shadow 0.2s;
 }
 .home .btn:hover,
 .home button:hover {
     background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
-    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+    box-shadow: 0 4px 16px rgba(255, 88, 88, 0.13);
 }
 
 /* Responsive */
 @media (max-width: 800px) {
     .home-card {
         max-width: 99vw;
-        margin: 12px 0;
+        padding: 18px 4vw;
         border-radius: 10px;
+        margin: 12px 0;
     }
     .card-image img {
         height: 160px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
     }
     .card-content .main-content {
-        padding: 12px 8px 8px 8px;
+        padding: 12px 8px 8px;
     }
     .action-row,
     .comment-list {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding: 0 8px;
     }
     .card-content form {
-        padding-left: 6px;
-        padding-right: 6px;
+        padding: 14px 6px 0;
+    }
+    .home h5 .avatar {
+        width: 36px;
+        height: 36px;
     }
 }

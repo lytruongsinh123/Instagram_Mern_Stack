@@ -1,0 +1,134 @@
+/* CreatePost Modern Style - đồng bộ profile/home */
+.createpost-container {
+    max-width: 500px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.13),
+        0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    border: 1px solid #f0f1f3;
+    padding: 36px 32px 32px 32px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.createpost-container input[type="text"] {
+    border-radius: 7px;
+    border: 1.2px solid #e0e0e0;
+    padding: 10px 14px;
+    margin: 12px 0;
+    width: 100%;
+    background: #fafbfc;
+    font-size: 1.05rem;
+    box-shadow: none;
+    transition: border 0.18s;
+    outline: none;
+    color: #222;
+    display: block;
+    box-sizing: border-box;
+}
+.createpost-container input[type="text"]:focus {
+    border: 1.2px solid #ff5858;
+    background: #fff;
+}
+.createpost-container .file-field {
+    margin: 18px 0 24px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+.createpost-container .file-field .btn {
+    flex-shrink: 0;
+}
+.createpost-container .file-path-wrapper {
+    flex: 1 1 0%;
+    margin: 0;
+}
+.createpost-container .file-path-wrapper input {
+    width: 100%;
+    min-width: 0;
+}
+.createpost-container .btn {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-bottom: 0;
+}
+.createpost-container .btn:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+}
+.createpost-container .file-path-wrapper input {
+    border-radius: 7px;
+    border: 1.2px solid #e0e0e0;
+    padding: 7px 12px;
+    background: #fafbfc;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+.createpost-container button[type="button"],
+.createpost-container button[type="submit"],
+.createpost-container .btn.submit-post {
+    margin-top: 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(255, 88, 88, 0.08);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+    padding: 14px 0;
+    font-size: 1.13rem;
+    width: 100%;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+}
+.createpost-container button[type="button"]:hover,
+.createpost-container button[type="submit"]:hover,
+.createpost-container .btn.submit-post:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    box-shadow: 0 4px 16px 0 rgba(255, 88, 88, 0.13);
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Make body input a textarea, bigger and more readable */
+.createpost-container textarea.body-input {
+    border-radius: 7px;
+    border: 1.2px solid #e0e0e0;
+    padding: 10px 14px;
+    margin: 12px 0;
+    width: 100%;
+    min-height: 90px;
+    background: #fafbfc;
+    font-size: 1.05rem;
+    box-shadow: none;
+    transition: border 0.18s;
+    outline: none;
+    color: #222;
+    display: block;
+    box-sizing: border-box;
+    resize: vertical;
+}
+.createpost-container textarea.body-input:focus {
+    border: 1.2px solid #ff5858;
+    background: #fff;
+}
+
+@media (max-width: 800px) {
+    .createpost-container {
+        max-width: 99vw;
+        padding: 18px 4vw 18px 4vw;
+        border-radius: 10px;
+    }
+}

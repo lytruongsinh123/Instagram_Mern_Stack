@@ -9,6 +9,7 @@ const {JWT_SECRET} = require('../config/keys')
 const requireLogin = require('../middleware/requireLogin')
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport')
+require("dotenv").config();
 const {SENDGRID_API,EMAIL} = require('../config/keys')
 //
 
