@@ -174,16 +174,19 @@ const Home = () => {
                             <h6>{item.likes.length} likes</h6>
                             <h6>{item.title}</h6>
                             <p>{item.body}</p>
-                            {item.comments.map((record) => {
-                                return (
-                                    <h6 key={record._id}>
-                                        <span style={{ fontWeight: "500" }}>
-                                            {record.postedBy.name}
-                                        </span>{" "}
-                                        {record.text}
-                                    </h6>
-                                );
-                            })}
+                            <div className="comment-list">
+                                {item.comments.map((record) => {
+                                    return (
+                                        <h6 key={record._id}>
+                                            <span style={{ fontWeight: "500" }}>
+                                                {record.postedBy.name}
+                                        
+                                            </span>{" "}
+                                            {record.text}
+                                        </h6>
+                                    );
+                                })}
+                            </div>
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault();
