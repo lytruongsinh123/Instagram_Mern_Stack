@@ -44,7 +44,7 @@ router.post('/signup',(req,res)=>{
             .then(user=>{
                 transporter.sendMail({
                     to:user.email,
-                    from:"no-reply@insta.com",
+                    from:"diepduong607@gmail.com",
                     subject:"signup success",
                     html:"<h1>welcome to instagram</h1>"
                 })
@@ -113,7 +113,7 @@ router.post("/reset-password", (req, res) => {
                 transporter.sendMail(
                     {
                         to: user.email,
-                        from: "no-reply@insta.com", // Đổi thành email đã xác thực trên SendGrid
+                        from: "diepduong607@gmail.com",
                         subject: "password reset",
                         html: `
                          <p>You requested for password reset</p>
