@@ -45,7 +45,7 @@ router.post("/signup", (req, res) => {
                     .then((user) => {
                         transporter.sendMail({
                             to: user.email,
-                            from: "em626.hungproject.app",
+                            from: "noreply@hungproject.app",
                             subject: "signup success",
                             html: "<h1>welcome to instagram</h1>",
                         });
@@ -122,7 +122,7 @@ router.post("/reset-password", (req, res) => {
                                 <a href="${EMAIL}/reset/${token}" style="display:inline-block;padding:10px 20px;background:#1976d2;color:#fff;text-decoration:none;border-radius:4px;">Đặt lại mật khẩu</a>
                                 <p>Nếu bạn không yêu cầu, hãy bỏ qua email này.</p>
                                 <hr>
-                                <p style="font-size:12px;color:#888;">Liên hệ: support@yourdomain.com | © 2025 Instagram Clone</p>
+                                <p style="font-size:12px;color:#888;">Liên hệ: noreply@hungproject.app | © 2025 Instagram Clone</p>
                             </div>
                         `,
                     },
