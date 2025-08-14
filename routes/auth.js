@@ -45,7 +45,7 @@ router.post("/signup", (req, res) => {
                     .then((user) => {
                         transporter.sendMail({
                             to: user.email,
-                            from: "hdo10120@gmail.com",
+                            from: "em626.hungproject.app",
                             subject: "signup success",
                             html: "<h1>welcome to instagram</h1>",
                         });
@@ -112,7 +112,7 @@ router.post("/reset-password", (req, res) => {
                 transporter.sendMail(
                     {
                         to: user.email,
-                        from: "hdo10120@gmail.com",
+                        from: "em626.hungproject.app",
                         subject: "password reset",
                         html: `
                             <div style="font-family:sans-serif;">
