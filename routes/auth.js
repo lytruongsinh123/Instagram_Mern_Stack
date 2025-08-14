@@ -112,7 +112,7 @@ router.post("/reset-password", (req, res) => {
                 transporter.sendMail(
                     {
                         to: user.email,
-                        from: "em626.hungproject.app",
+                        from: "hungproject.app",
                         subject: "password reset",
                         html: `
                             <div style="font-family:sans-serif;">
