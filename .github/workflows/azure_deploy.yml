@@ -24,14 +24,13 @@ jobs:
                   npm run build --if-present
 
             - name: Zip artifact for deployment
-              run: |
-                  zip -r ../release.zip ./*
+              run: zip -r release.zip ./* # ✅ Không còn ../
 
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v4
               with:
                   name: node-app
-                  path: ../release.zip # ⚠️ thêm ../ vì bạn zip ra ngoài thư mục
+                  path: release.zip # ✅ Nằm ngay trong workspace
 
     deploy:
         runs-on: ubuntu-latest
@@ -63,6 +62,6 @@ jobs:
               id: deploy-to-webapp
               uses: azure/webapps-deploy@v2
               with:
-                  app-name: "hunginstagram" # ⚠️ sửa đúng tên App Service
+                  app-name: "hunginstagram" # ⚠️ sửa đúng với App Service trên Azure
                   slot-name: "Production"
                   package: ./ServerApp
