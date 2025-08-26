@@ -3,7 +3,7 @@ name: Build and deploy Node.js app to Azure Web App - Hunginstagram
 on:
     push:
         branches:
-            - dev
+            - main
     workflow_dispatch:
 
 jobs:
