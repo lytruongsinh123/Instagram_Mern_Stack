@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping backend (Azure App Service)
-        run: curl -fsS https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/allpost -o /dev/null
+        run: curl -fsS https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/health -o /dev/null
 
       - name: Ping frontend (React App)
         run: curl -fsS https://instagram.hungproject.app -o /dev/null
