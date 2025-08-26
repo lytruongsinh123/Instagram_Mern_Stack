@@ -7,11 +7,14 @@ const Home = () => {
     const [data, setData] = useState([]);
     const { state, dispatch } = useContext(UserContext);
     useEffect(() => {
-        fetch("https://hung-instagram.onrender.com/allpost", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/allpost",
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);
@@ -20,16 +23,19 @@ const Home = () => {
     }, []);
 
     const likePost = (id) => {
-        fetch("https://hung-instagram.onrender.com/like", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-                postId: id,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/like",
+            {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                body: JSON.stringify({
+                    postId: id,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 //   console.log(result)
@@ -47,16 +53,19 @@ const Home = () => {
             });
     };
     const unlikePost = (id) => {
-        fetch("https://hung-instagram.onrender.com/unlike", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-                postId: id,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/unlike",
+            {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                body: JSON.stringify({
+                    postId: id,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 //   console.log(result)
@@ -75,17 +84,20 @@ const Home = () => {
     };
 
     const makeComment = (text, postId) => {
-        fetch("https://hung-instagram.onrender.com/comment", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-                postId,
-                text,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/comment",
+            {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                body: JSON.stringify({
+                    postId,
+                    text,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);
@@ -104,12 +116,15 @@ const Home = () => {
     };
 
     const deletePost = (postid) => {
-        fetch(`https://hung-instagram.onrender.com/deletepost/${postid}`, {
-            method: "delete",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-        })
+        fetch(
+            `https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/deletepost/${postid}`,
+            {
+                method: "delete",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);

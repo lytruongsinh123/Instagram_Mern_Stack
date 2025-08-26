@@ -81,15 +81,18 @@ const NavBar = () => {
 
     const fetchUsers = (query) => {
         setSearch(query);
-        fetch("https://hung-instagram.onrender.com/search-users", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/search-users",
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    query,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((results) => {
                 setUserDetails(results.user);

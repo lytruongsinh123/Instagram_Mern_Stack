@@ -17,16 +17,19 @@ const SignIn = () => {
             M.toast({ html: "invalid email", classes: "#c62828 red darken-3" });
             return;
         }
-        fetch("https://hung-instagram.onrender.com/signin", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                password,
-                email,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/signin",
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    password,
+                    email,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

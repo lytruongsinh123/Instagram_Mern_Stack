@@ -7,11 +7,14 @@ const Profile = () => {
     const { state, dispatch } = useContext(UserContext);
     const [image, setImage] = useState("");
     useEffect(() => {
-        fetch("https://hung-instagram.onrender.com/mypost", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/mypost",
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);
@@ -30,17 +33,20 @@ const Profile = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    fetch("https://hung-instagram.onrender.com/updatepic", {
-                        method: "put",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization:
-                                "Bearer " + localStorage.getItem("jwt"),
-                        },
-                        body: JSON.stringify({
-                            pic: data.url,
-                        }),
-                    })
+                    fetch(
+                        "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/updatepic",
+                        {
+                            method: "put",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization:
+                                    "Bearer " + localStorage.getItem("jwt"),
+                            },
+                            body: JSON.stringify({
+                                pic: data.url,
+                            }),
+                        }
+                    )
                         .then((res) => res.json())
                         .then((result) => {
                             console.log(result);

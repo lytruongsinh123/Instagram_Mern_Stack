@@ -8,16 +8,19 @@ const NewPassword = () => {
     const { token } = useParams();
     console.log(token);
     const PostData = () => {
-        fetch("https://hung-instagram.onrender.com/new-password", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                password,
-                token,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/new-password",
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    password,
+                    token,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

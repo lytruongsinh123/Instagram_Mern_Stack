@@ -12,11 +12,14 @@ const Profile = () => {
         state ? !state.following.includes(userid) : true
     );
     useEffect(() => {
-        fetch(`https://hung-instagram.onrender.com/user/${userid}`, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-        })
+        fetch(
+            `https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/user/${userid}`,
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 //console.log(result)
@@ -26,16 +29,19 @@ const Profile = () => {
     }, []);
 
     const followUser = () => {
-        fetch("https://hung-instagram.onrender.com/follow", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-                followId: userid,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/follow",
+            {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                body: JSON.stringify({
+                    followId: userid,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 dispatch({
@@ -59,16 +65,19 @@ const Profile = () => {
             });
     };
     const unfollowUser = () => {
-        fetch("https://hung-instagram.onrender.com/unfollow", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-                unfollowId: userid,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/unfollow",
+            {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+                body: JSON.stringify({
+                    unfollowId: userid,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 dispatch({

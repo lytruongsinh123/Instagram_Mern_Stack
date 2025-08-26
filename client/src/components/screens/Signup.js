@@ -40,18 +40,21 @@ const SignIn = () => {
             M.toast({ html: "invalid email", classes: "#c62828 red darken-3" });
             return;
         }
-        fetch("https://hung-instagram.onrender.com/signup", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name,
-                password,
-                email,
-                pic: url,
-            }),
-        })
+        fetch(
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/signup",
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    password,
+                    email,
+                    pic: url,
+                }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.error) {

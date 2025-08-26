@@ -12,18 +12,21 @@ const CreatePost = () => {
 
     useEffect(() => {
         if (url) {
-            fetch("https://hung-instagram.onrender.com/createpost", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + localStorage.getItem("jwt"),
-                },
-                body: JSON.stringify({
-                    title,
-                    body,
-                    pic: url,
-                }),
-            })
+            fetch(
+                "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/createpost",
+                {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + localStorage.getItem("jwt"),
+                    },
+                    body: JSON.stringify({
+                        title,
+                        body,
+                        pic: url,
+                    }),
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.error) {
