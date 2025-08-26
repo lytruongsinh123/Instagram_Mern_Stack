@@ -1,13 +1,16 @@
-name: Ping Render
+name: Ping Azure and React App
 
 on:
   schedule:
-    - cron: "*/2 * * * *" # Mỗi 5 phút
+    - cron: "*/2 * * * *" # Mỗi 2 phút
   workflow_dispatch:
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send request to Render app
-        run: curl -s https://hung-instagram.onrender.com > /dev/null
+      - name: Ping backend (Azure App Service)
+        run: curl -fsS https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net -o /dev/null
+
+      - name: Ping frontend (React App)
+        run: curl -fsS https://instagram.hungproject.app -o /dev/null
