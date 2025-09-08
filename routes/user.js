@@ -26,8 +26,10 @@ router.get("/user/:id", requireLogin, (req, res) => {
         });
 });
 
-router.get("/getalluser", requireLogin, (req, res) => {
-    User.find()
+router.get("/getallusernotfollow", requireLogin, (req, res) => {
+    User.find({
+        _id: { $nin: [...req.user.following, req.user._id] },
+    })
         .select("-password")
         .then((users) => {
             res.json({ users });
