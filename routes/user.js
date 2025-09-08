@@ -25,8 +25,41 @@ router.get("/user/:id", requireLogin, (req, res) => {
             return res.status(404).json({ error: "User not found" });
         });
 });
-
+router.get("/user/:id/followers", requireLogin, (req, res) => {
+    User.findById(req.params.id)
+        .populate("followers", "_id name email pic") // Populate thông tin followers
+        .select("followers") // Chỉ lấy trường followers
+        .then((user) => {
+            if (!user) {
+                return res.status(404).json({ error: "User not found" });
+            }
+            res.json({ followers: user.followers });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: "Something went wrong" });
+        });
+});
+router.get("/user/:id/following", requireLogin, (req, res) => {
+    User.findById(req.params.id)
+        .populate("following", "_id name email pic") // Populate thông tin following
+        .select("following") // Chỉ lấy trường following
+        .then((user) => {
+            if (!user) {
+                return res.status(404).json({ error: "User not found" });
+            }
+            res.json({ following: user.following });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: "Something went wrong" });
+        });
+});
 router.get("/getallusernotfollow", requireLogin, (req, res) => {
+    if (!req.user || !req.user.following) {
+        return res.status(400).json({ error: "Invalid user data" });
+    }
+
     User.find({
         _id: { $nin: [...req.user.following, req.user._id] },
     })
@@ -38,6 +71,7 @@ router.get("/getallusernotfollow", requireLogin, (req, res) => {
             res.status(500).json({ error: "Something went wrong" });
         });
 });
+
 
 router.put("/follow", requireLogin, (req, res) => {
     User.findByIdAndUpdate(

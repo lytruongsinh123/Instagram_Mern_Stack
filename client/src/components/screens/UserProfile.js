@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../App";
 import { useParams } from "react-router-dom";
 import "../../styles/userprofile.css";
+import "../../styles/modal.css";
+import Modal from "react-modal";
 
 const Profile = () => {
     const [userProfile, setProfile] = useState(null);
@@ -11,6 +13,8 @@ const Profile = () => {
     const [showfollow, setShowFollow] = useState(
         state ? !state.following.includes(userid) : true
     );
+    const [followers, setFollowers] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         fetch(
             `https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/user/${userid}`,
@@ -27,7 +31,39 @@ const Profile = () => {
                 setProfile(result);
             });
     }, []);
-
+    const fetchFollowers = () => {
+        fetch(
+            `https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/user/${userid}/followers`,
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
+            .then((res) => res.json())
+            .then((result) => {
+                setFollowers(result.followers);
+                setIsModalOpen(true);
+            });
+    };
+    const fetchFollowing = () => {
+        fetch(
+            `https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/user/${userid}/following`,
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("jwt"),
+                },
+            }
+        )
+            .then((res) => res.json())
+            .then((result) => {
+                setFollowers(result.following);
+                setIsModalOpen(true);
+            });
+    };
+    const closeModal = () => {
+        setIsModalOpen(false); // Đóng modal
+    };
     const followUser = () => {
         fetch(
             "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/follow",
@@ -121,11 +157,15 @@ const Profile = () => {
                             <h5>{userProfile.user.email}</h5>
                             <div className="userprofile-stats">
                                 <h6>{userProfile.posts.length} posts</h6>
-                                <h6>
+                                <h6
+                                    style={{ cursor: "pointer" }}
+                                    onClick={fetchFollowers}>
                                     {userProfile.user.followers.length}{" "}
                                     followers
                                 </h6>
-                                <h6>
+                                <h6
+                                    style={{ cursor: "pointer" }}
+                                    onClick={fetchFollowing}>
                                     {userProfile.user.following.length}{" "}
                                     following
                                 </h6>
@@ -163,6 +203,41 @@ const Profile = () => {
             ) : (
                 <h2>loading...!</h2>
             )}
+
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Followers Modal">
+                <h2>Followers</h2>
+                <button onClick={closeModal} className="close-modal-btn">
+                    Close
+                </button>
+                <ul>
+                    {Array.isArray(followers) && followers.length > 0 ? (
+                        followers.map((follower) => (
+                            <li key={follower._id}>
+                                <img src={follower.pic} alt={follower.name} />
+                                <div className="follower-info">
+                                    <span className="follower-name">
+                                        {follower.name}
+                                    </span>
+                                    <span className="follower-email">
+                                        <i
+                                            className="fa fa-envelope"
+                                            style={{
+                                                marginRight: "6px",
+                                                color: "#ff7e5f",
+                                            }}></i>
+                                        {follower.email}
+                                    </span>
+                                </div>
+                            </li>
+                        ))
+                    ) : (
+                        <p>No followers found</p>
+                    )}
+                </ul>
+            </Modal>
         </>
     );
 };

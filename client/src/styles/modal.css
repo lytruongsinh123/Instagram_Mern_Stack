@@ -1,0 +1,128 @@
+/* Overlay */
+.ReactModal__Overlay {
+    background: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s;
+}
+
+/* Modal content */
+.ReactModal__Content {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 32px 24px 32px;
+    max-width: 400px;
+    width: 95vw;
+    min-height: 200px;
+    position: relative;
+    font-family: "Montserrat", "Roboto", Arial, sans-serif;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideDown 0.3s;
+    margin: auto;
+}
+
+/* Title */
+.ReactModal__Content h2 {
+    font-family: "Pacifico", cursive, Arial, sans-serif;
+    color: #ff7e5f;
+    font-size: 2rem;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Close button */
+.close-modal-btn {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.close-modal-btn:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    transform: scale(1.07);
+}
+
+/* Followers list */
+.ReactModal__Content ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ReactModal__Content ul li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 1.08rem;
+    color: #222;
+    background: #f5f6fa; /* Nền xám nhạt */
+    border-radius: 12px;
+    padding: 10px 14px;
+    transition: background 0.2s;
+}
+.ReactModal__Content ul li:hover {
+    background: #ffe3d3; /* Hover mới dùng cam nhạt */
+}
+.ReactModal__Content ul li img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #ffb88c;
+    object-fit: cover;
+    background: #fff;
+}
+.follower-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.follower-name {
+    font-weight: 700;
+    font-size: 1.08rem;
+    color: #222; /* Đen/xám đậm */
+    margin-bottom: 2px;
+}
+.follower-email {
+    font-size: 0.97rem;
+    color: #6c757d; /* Xám xanh nhẹ */
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+}
+/* Hiệu ứng */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

@@ -24,7 +24,7 @@ const Home = () => {
 
         // Lấy user
         fetch(
-            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/getalluser",
+            "https://hunginstagram-cjfqgug2gzdng5bs.koreacentral-01.azurewebsites.net/getallusernotfollow",
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -284,7 +284,14 @@ const Home = () => {
                                         </div>
                                     </div>
                                     <button className="user-suggest-follow-vertical">
-                                        Theo dõi
+                                        <Link
+                                            to={
+                                                user._id !== state._id
+                                                    ? "/profile/" + user._id
+                                                    : "/profile"
+                                            }>
+                                            Theo dõi
+                                        </Link>
                                     </button>
                                 </div>
                             ))}
